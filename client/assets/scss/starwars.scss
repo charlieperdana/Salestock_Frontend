@@ -1,0 +1,322 @@
+
+
+.menu-bar {
+
+	> li {
+		> a {
+			align-self: center;
+			> .logo {
+				height: 48px;
+				padding-left: 10px;
+				padding-right: 10px;
+				margin-bottom: 0;
+			}
+		}
+
+		&.show-all {
+			> a {
+				padding: 0 10px;
+				background-color: #000;
+			}
+		}
+	}
+
+	&.primary {
+    	background: #ffe300;
+
+    	> li > a {
+    		color: #000;
+    	}
+	}
+
+	&.vertical {
+		&> li {
+			&> a {
+				font-size: 36px;
+				text-align: center;
+				display: block;
+				padding: 30px 0;
+				font-family: "STARWARS";
+				letter-spacing: 0.7px;
+				transition: .2s all ease-out;
+				-webkit-text-overflow: ellipsis;
+				text-overflow: ellipsis;
+			}
+		}
+	}
+
+	&.condense {
+		text-transform: uppercase;
+		.is-active > a {
+			font-weight: 900;
+		}
+	}
+}
+
+.menu-group {
+	background: #ffe300;
+	@include breakpoint(medium) {
+		li.show-small {
+			display: none;
+		}
+	}
+	@include breakpoint(medium down) {
+		li {
+			display: none;
+		}
+		li.show-small,
+		li.show-all {
+			display: flex;
+		}
+	}
+	.menu-bar > li > a.offcanvas-toggle {
+		font-size: 34px;
+		padding: 0 14px;
+	}
+}
+
+.off-canvas ~ .grid-frame {
+	background: #000;
+}
+
+.off-canvas {
+	background: #ffe300;
+	overflow: auto;
+	h2 {
+		font-size: 2.125rem;
+		line-height: 1;
+		padding: 0 .7rem;
+	}
+	.menu-bar.vertical {
+		margin: 0;
+		&> li {
+			&> a {
+				font-size: 24px;
+				padding: 17px 0;
+				color: #222;
+				&:hover {
+					background: #000;
+					color: #fff;
+				}
+			}
+			&.is-active > a {
+				color: #fff;
+			}
+		}
+	}
+}
+
+h1 {
+	font-family: 'STARWARS';
+    color: #ffe300;
+	line-height: 1;
+	padding: 30px 0;
+	@media screen and (max-width: 500px) {
+		font-size: 3.375rem;
+	}
+	@media screen and (max-width: 390px) {
+		font-size: 2.5rem;
+	}
+	&+ img {
+		border: 8px #000 solid;
+	}
+}
+
+
+
+.button.pagination {
+	font-size: 30px;
+	margin: 0;
+	line-height: 1;
+	font-weight: bold;
+	width: 100%;
+}
+
+
+
+dt, dd {
+	display: block;
+	float: left;
+	margin-top: 0;
+}
+dt {
+	clear: both;
+	text-transform: uppercase;
+	font-size: .8em;
+	line-height: 2.2em;
+	&::after {
+		content: ":";
+	}
+}
+dd {
+	margin-left: 1.3em;
+	&[href] {
+		display: inline-block;
+		position: relative;
+		&::after {
+			content: '';
+			display: block;
+			width: 100%;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			border-bottom: 1px dotted;
+			transition: .2s all ease-out;
+		}
+		&:hover::after {
+			border-bottom: 2px dashed;
+		}
+	}
+}
+
+.crawl {
+	white-space: pre-wrap;
+}
+
+.grid-content {
+	&.shrink {
+		padding: 0;
+	}
+	&.films,
+	&.species,
+	&.planets,
+	&.people,
+	&.starships,
+	&.vehicles {
+		margin: 0 -1rem;
+		&> * {
+			width: calc( 100% + 1rem );
+		}
+	}
+}
+
+/* Keyframes */
+
+@keyframes star {
+    0% {
+        opacity: 0;
+        transform: scale(1.5) translateY(-0.75em);
+    }
+    20% {
+        opacity: 1;
+    }
+    89% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateZ(-1000em);
+    }
+}
+
+@keyframes wars {
+    0% {
+        opacity: 0;
+        transform: scale(1.5) translateY(0.5em);
+    }
+    20% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateZ(-1000em);
+    }
+}
+
+@keyframes spin-letters {
+    0%,
+    10% {
+        opacity: 0;
+        transform: rotateY(90deg);
+    }
+    30% {
+        opacity: 1;
+    }
+    70%,
+    86% {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+    95%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes text-force {
+    0% {
+        transform: translateZ(5em);
+    }
+    100% {
+        transform: translateZ(0);
+    }
+}
+
+.starwars-container {
+	background: #000 url('../images/bg.jpg');
+	width: 100%;
+	height: 100%;
+}
+
+.starwars-home {
+    perspective: 800px;
+    height: 17em;
+    left: 50%;
+    position: absolute;
+    top: 53%;
+    transform: translate(-50%, -50%);
+    width: 34em;
+
+    @media only screen and (max-width: 600px) {
+    	font-size: 10px;
+    }
+
+    @media only screen and (max-width: 480px) {
+        font-size: 7px;
+    }
+}
+
+.icon-star,
+.icon-wars,
+.text-force {
+    position: absolute;
+}
+
+.icon-star {
+    top: -0.75em;
+    animation: star 10s ease-out infinite;
+    width: 100%;
+}
+
+.icon-wars {
+    bottom: -0.5em;
+    animation: wars 10s ease-out infinite;
+    width: 100%;
+}
+
+
+.text-force {
+    color: #fff;
+    font-family: "ITC Serif Gothic", Lato;
+    font-size: 2.25em;
+    left: -2em;
+    letter-spacing: 0.4em;
+    right: -2em;
+    text-align: center;
+    text-transform: uppercase;
+    top: 37%;
+    animation: text-force 10s linear infinite;
+
+    span {
+    	animation: spin-letters 10s linear infinite;
+        display: inline-block;
+    }
+}
+
+
+
